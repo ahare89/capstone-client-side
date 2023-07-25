@@ -1,0 +1,10 @@
+.budgets {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.budget {
+    padding: 4em;
+}
