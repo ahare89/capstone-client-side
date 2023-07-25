@@ -8,3 +8,15 @@
 .budget {
     padding: 4em;
 }
+
+.title {
+    text-align: center;
+}
+
+#btn-createBudget {
+    text-align: center;
+}
+
+.btn btn-primary {
+    text-align: center;
+}

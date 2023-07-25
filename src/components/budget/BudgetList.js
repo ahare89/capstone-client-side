@@ -5,8 +5,13 @@ import { EditBudget } from "./EditBudget"
 import { DeleteBudget } from "./DeleteBudget"
 
 export const BudgetList = () => {
+
+    const localBudgetUser = localStorage.getItem("budget_user")
+    const budgetUserObject = JSON.parse(localBudgetUser)
     
     const [budget, setBudget] = useState([])
+
+    const [filteredBudgets, setFiltered] = useState([])
 
     const getAllBudgets = () => {
         fetch(`http://localhost:8088/budgets`)
@@ -31,14 +36,26 @@ export const BudgetList = () => {
         []
     )
 
+    useEffect(
+        () => {
+            if (budgetUserObject.id !== null) {
+            const myBudgets = budget.filter(budget => budget.userId === budgetUserObject.id)
+                setFiltered(myBudgets)
+        }   else {
+            setFiltered(budget)
+        }
+    },
+        [budget]
+    ) 
+        
     return <>
         <h3>My Budgets</h3>
         <article className="budgets">
         {
-        budget.map(
+        filteredBudgets.map(
             (budget) => {
                     return <section className="budget" key={budget.id}>
-                    <header className="header"><Link to = {`/budgets`}>{budget.name}</Link></header>
+                    <header className="header"><Link to = {`/budget/${budget.id}`}>{budget.name}</Link></header>
                     <div><EditBudget/></div>
                     <div><DeleteBudget id={budget.id} getAllBudgets={getAllBudgets}/></div>
                     </section>

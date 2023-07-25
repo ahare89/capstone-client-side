@@ -79,28 +79,29 @@ export const NewBudgetForm = () => {
             }>
             <label htmlFor="category group">Choose your starting category groups: </label>
             <p></p>
-            <input type="checkbox"name="category_group" value="1"/>Credit Card Payments
+            <input type="checkbox"name="category_group" value="Credit Card Payments"/>Credit Card Payments
             <p></p>
-            <input type="checkbox"name="category_group" value="2"/>Bills
+            <input type="checkbox"name="category_group" value="Utility Bill"/>Utility Bill
             <p></p>
-            <input type="checkbox"name="category_group" value="3"/>Frequent Expenses
+            <input type="checkbox"name="category_group" value="Gas"/>Gas
             <p></p>
-            <input type="checkbox"name="category_group" value="4"/>Goals
+            <input type="checkbox"name="category_group" value="Vacation"/>Vacation
             <p></p>
-            <input type="checkbox"name="category_group" value="5"/>Non-Monthly
+            <input type="checkbox"name="category_group" value="Rent/Mortgage"/>Rent/Mortgage
             <p></p>
-            <input type="checkbox"name="category_group" value="6"/>Quality of Life
+            <input type="checkbox"name="category_group" value="Dining onSubmit"/>Dining onSubmit
             <p></p>
-            <input type="checkbox"name="category_group" value="7"/>Weekly Expenses
+            <input type="checkbox"name="category_group" value="Clothing"/>Clothing
             <p></p>
-            <input type="checkbox"name="category_group" value="8"/>Monthly Expenses
+            <input type="checkbox"name="category_group" value="Household Goods"/>Household Goods
             <p></p>
-            <input type="checkbox"name="category_group" value="9"/>Yearly Expenses
+            <input type="checkbox"name="category_group" value="Auto Insurance"/>Auto Insurance
             <p></p>
-            <input type="checkbox"name="category_group" value="10"/>Vacation
+            <input type="checkbox"name="category_group" value="Phone Bill"/>Phone Bill
             <p></p>
-            <input type="checkbox"name="category_group" value="11"/>Wish List
+            <input type="checkbox"name="category_group" value="Fun"/>Fun
             <p></p>
+            <input type="checkbox"name="category_group" value="Miscellaneous"/>Miscellaneous
             </div>
     </div>
     </fieldset>
