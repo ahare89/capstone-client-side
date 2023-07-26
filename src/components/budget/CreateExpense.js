@@ -42,30 +42,53 @@ export const CreateExpense = () => {
     
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
-
+    
         const expenseToSendToAPI = {
             budgetId: expense.budgetId,
             categoryId: expense.categoryId,
             name: expense.name,
             amount: parseFloat(expense.amount)
-
-
         }
-
-        return fetch(`http://localhost:8088/expenses`,{
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(expenseToSendToAPI)
+    
+        fetch(`http://localhost:8088/budgets/${budgetId}`)
+        .then(res => res.json())
+        .then(budgetData => {
+            if (!budgetData.categories.includes(expense.categoryId)) {
+                budgetData.categories.push(expense.categoryId);
+    
+                return fetch(`http://localhost:8088/budgets/${budgetId}`,{
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(budgetData)
+                })
+                .then(() => expenseToSendToAPI)
+            } else {
+                return expenseToSendToAPI;
+            }
         })
-            .then(res => res.json())
-            .then(() => {
-                navigate(`/budget/${budgetId}`)
+        .then(expenseToSendToAPI => {
+            return fetch(`http://localhost:8088/expenses`,{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(expenseToSendToAPI)
             })
-
-
-
+        })
+        .then(res => res.json())
+        .then(() => {
+            alert("Success!")
+            setExpense(({
+                budgetId: parseInt(budgetId),
+                categoryId: "",
+                name: "",
+                amount: ""
+            }))
+            navigate(`/budget/${budgetId}`)
+        },
+        [])
     }
     
 
@@ -117,8 +140,10 @@ export const CreateExpense = () => {
                         onChange={(evt) => {
                             const copy={...expense}
                             copy.categoryId = parseInt(evt.target.value)
+                            console.log(copy.categoryId)
                             setExpense(copy)
                         }}>
+                            <option value="" disabled>Select a category</option>
                             {category.map(category => (<option key={category.id} value={category.id}>{category.name}</option>))}
                         </select>
                 </div>

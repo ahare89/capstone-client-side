@@ -118,135 +118,140 @@
     {
       "id": 12,
       "name": "Miscellaneous"
+    },
+    {
+      "id": 13,
+      "name": "Car Payment"
     }
   ],
   "budgets": [
     {
       "userId": 4,
-      "name": "My New Budget",
-      "categoryGroupIds": [
-        "1",
-        "2",
-        "3"
-      ],
-      "dateCreated": "2023-07-24T19:45:50.924Z",
-      "id": 9
-    },
-    {
-      "userId": 4,
-      "name": "Budget 2",
-      "categoryGroupIds": [
-        "6",
-        "7",
-        "8"
-      ],
-      "dateCreated": "2023-07-24T20:34:53.018Z",
-      "id": 10
-    },
-    {
-      "userId": 4,
-      "name": "Budget 3",
-      "categoryGroupIds": [
-        "4",
-        "5",
-        "6"
-      ],
-      "dateCreated": "2023-07-24T20:35:01.392Z",
-      "id": 11
-    },
-    {
-      "userId": 4,
-      "name": "Budget 4",
-      "categoryGroupIds": [
-        "5",
-        "6",
-        "7"
-      ],
-      "dateCreated": "2023-07-24T20:35:08.407Z",
-      "id": 12
-    },
-    {
-      "userId": 4,
-      "name": "Budget 5",
-      "categoryGroupIds": [
-        "8",
-        "5",
-        "3"
-      ],
-      "dateCreated": "2023-07-24T20:35:18.127Z",
-      "id": 13
-    },
-    {
-      "userId": 1,
-      "name": "Darin's budget",
-      "categoryGroupIds": [],
-      "dateCreated": "2023-07-25T15:40:45.654Z",
-      "id": 14
-    },
-    {
-      "userId": 1,
-      "name": "Darin's Third Budget",
-      "categoryGroupIds": [
-        "1",
-        "2"
-      ],
-      "dateCreated": "2023-07-25T15:41:03.158Z",
-      "id": 15
-    },
-    {
-      "userId": 1,
-      "name": "Darin's 2nd Budget",
-      "categoryGroupIds": [],
-      "dateCreated": "2023-07-25T15:41:13.557Z",
-      "id": 16
-    },
-    {
-      "userId": 1,
-      "name": "Darin's Test Budget",
-      "categoryGroupIds": [
-        "6",
-        "7",
-        "8"
-      ],
-      "dateCreated": "2023-07-25T18:11:11.501Z",
-      "id": 17
-    },
-    {
-      "userId": 1,
-      "name": "Darin's 50th Budget",
+      "name": "Test Budget 99",
       "categories": [
-        "Rent/Mortgage",
-        "Gas",
-        "Utility Bill",
-        "Household Goods",
-        "Fun",
-        "Miscellaneous"
+        1,
+        2,
+        3,
+        12,
+        11,
+        6
       ],
-      "dateCreated": "2023-07-25T19:55:28.536Z",
-      "id": 18
+      "dateCreated": "2023-07-26T18:33:02.096Z",
+      "id": 24
+    },
+    {
+      "userId": 4,
+      "name": "HH Budget",
+      "categories": [
+        1,
+        2,
+        3,
+        4,
+        13,
+        8
+      ],
+      "dateCreated": "2023-07-26T19:50:14.019Z",
+      "id": 25
     }
   ],
   "expenses": [
     {
-      "budgetId": 18,
+      "budgetId": 24,
+      "categoryId": 3,
+      "name": "Gas for Car",
+      "amount": 42.99,
+      "id": 5
+    },
+    {
+      "budgetId": 24,
+      "categoryId": 2,
+      "name": "Electric Bill",
+      "amount": 142.99,
+      "id": 6
+    },
+    {
+      "budgetId": 24,
+      "categoryId": 1,
+      "name": "Capital One payment",
+      "amount": 167.88,
+      "id": 7
+    },
+    {
+      "budgetId": 24,
+      "categoryId": 2,
+      "name": "Natural Gas Bill",
+      "amount": 165,
+      "id": 9
+    },
+    {
+      "budgetId": 24,
+      "categoryId": 1,
+      "name": "Test",
+      "amount": 14.99,
+      "id": 10
+    },
+    {
+      "budgetId": 24,
+      "categoryId": 12,
+      "name": "Macbook Pro",
+      "amount": 1500,
+      "id": 15
+    },
+    {
+      "budgetId": 24,
+      "categoryId": 11,
+      "name": "Movie",
+      "amount": 16.99,
+      "id": 16
+    },
+    {
+      "budgetId": 24,
+      "categoryId": 12,
+      "name": "Car Payment",
+      "amount": 350,
+      "id": 17
+    },
+    {
+      "budgetId": 24,
+      "categoryId": 6,
+      "name": "Ham Sandwich",
+      "amount": 4.99,
+      "id": 18
+    },
+    {
+      "budgetId": 24,
+      "categoryId": 11,
+      "name": "New Boat Payment",
+      "amount": 175,
+      "id": 19
+    },
+    {
+      "budgetId": 24,
+      "categoryId": 6,
+      "name": "Jelly Sandwich",
+      "amount": 5.75,
+      "id": 20
+    },
+    {
+      "budgetId": 25,
+      "categoryId": 13,
+      "name": "Lexus",
+      "amount": 175.88,
+      "id": 21
+    },
+    {
+      "budgetId": 25,
       "categoryId": 2,
       "name": "Internet Bill",
-      "amount": 125,
-      "id": 1
+      "amount": 101.55,
+      "id": 22
     },
     {
-      "budgetId": 18,
-      "categoryId": 3,
-      "name": "Gas for Truck",
-      "amount": 150,
-      "id": 2
-    },
-    {
-      "budgetId": 18,
-      "categoryId": "",
-      "name": "Test",
-      "amount": 105.74,
-      "id": 3
+      "budgetId": 25,
+      "categoryId": 8,
+      "name": "Cheese",
+      "amount": 5,
+      "id": 23
     }
   ]
 }
