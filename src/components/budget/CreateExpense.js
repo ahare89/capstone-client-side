@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
-export const CreateExpense = () => {
+export const CreateExpense = ({expenseState, setExpenses, budget, setBudget, setCategoriesUpdateTrigger}) => {
     
     const navigate = useNavigate()
 
@@ -9,25 +9,16 @@ export const CreateExpense = () => {
     const budgetUserObject = JSON.parse(localBudgetUser)
 
     const { budgetId } = useParams()
+    const [category, setCategory] = useState([])
 
-    const [budgets, setBudgets] = useState([])
-
+    //state variable for expense
     const [expense, setExpense] = useState({
         budgetId: parseInt(budgetId),
         categoryId: "",
         name: "",
         amount: ""
-    })
+    });
 
-    const [category, setCategory] = useState([])
-
-    useEffect(() => {
-        fetch(`http://localhost:8088/budgets`)
-        .then(res => res.json())
-        .then((budgetArray) => {
-            setBudgets(budgetArray)
-        })
-    }, []) 
 
     useEffect(() => {
         fetch(`http://localhost:8088/categories`)
@@ -49,13 +40,15 @@ export const CreateExpense = () => {
             name: expense.name,
             amount: parseFloat(expense.amount)
         }
-    
+        //fetch the current budget from database
         fetch(`http://localhost:8088/budgets/${budgetId}`)
         .then(res => res.json())
         .then(budgetData => {
+            //if budgetData.categories does not include the category for the expense we're adding--
             if (!budgetData.categories.includes(expense.categoryId)) {
+                //--push the category to the budget
                 budgetData.categories.push(expense.categoryId);
-    
+                //update budget with the added category
                 return fetch(`http://localhost:8088/budgets/${budgetId}`,{
                     method: "PUT",
                     headers: {
@@ -63,11 +56,13 @@ export const CreateExpense = () => {
                     },
                     body: JSON.stringify(budgetData)
                 })
+                //implicit return of expenseToSendToAPI for next .then
                 .then(() => expenseToSendToAPI)
             } else {
                 return expenseToSendToAPI;
             }
         })
+        //use a POST fetch call to add expense to the database
         .then(expenseToSendToAPI => {
             return fetch(`http://localhost:8088/expenses`,{
                 method: "POST",
@@ -77,18 +72,24 @@ export const CreateExpense = () => {
                 body: JSON.stringify(expenseToSendToAPI)
             })
         })
+        //parse the response data as json
         .then(res => res.json())
-        .then(() => {
-            alert("Success!")
+        //newExpense is data received from json server
+        .then((newExpense) => {
+            //set global state variable for the updated state
+            setExpenses(prevExpenses => [...prevExpenses, newExpense])
+            //clear the form fields
             setExpense(({
                 budgetId: parseInt(budgetId),
                 categoryId: "",
                 name: "",
                 amount: ""
             }))
+            //categories were updated, so use setCategoriesTrigger and add 1, making it truthy
+            setCategoriesUpdateTrigger(categoriesUpdateTrigger => categoriesUpdateTrigger + 1)
+            //use navigate to navigate back to the budget
             navigate(`/budget/${budgetId}`)
-        },
-        [])
+        })
     }
     
 
@@ -117,7 +118,6 @@ export const CreateExpense = () => {
                 <div className="form-group">
                     <label htmlFor="amount">Amount: </label>
                     <input
-                        required autoFocus
                         type="text"
                         className="form-control"
                         placeholder="Please enter the amount"
@@ -132,7 +132,7 @@ export const CreateExpense = () => {
                 </div>
             </fieldset>
             <fieldset>
-                <div className="form-group">
+                <div className="dropdown">
                     <label htmlFor="budget">Category: </label>
                     <select id="category"
                         className="form-control"
@@ -148,7 +148,7 @@ export const CreateExpense = () => {
                         </select>
                 </div>
             </fieldset>
-            <button onClick={(clickEvent) => handleSaveButtonClick(clickEvent)} className="btn btn-primary">Save</button>
+            <button onClick={(clickEvent) => handleSaveButtonClick(clickEvent)} className="btn btn-success">Save</button>
 
     </form>
     )

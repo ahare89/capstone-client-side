@@ -9,14 +9,29 @@
     padding: 4em;
 }
 
-.title {
+.display-3 {
     text-align: center;
 }
 
-#btn-createBudget {
+/* 
+.btn-btn-primary {
+    text-align: center;
+} */
+
+.category {
+    color: blue
+}
+
+.createBudgetButton {
     text-align: center;
 }
 
-.btn btn-primary {
-    text-align: center;
+.bi-flex-shrink-0-me-2 {
+    width: 2px;
+    height: 1px;
 }
+
+.amount {
+    color: green;
+}
+

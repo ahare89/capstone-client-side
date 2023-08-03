@@ -1,0 +1,42 @@
+.title {
+    text-align: center;
+    margin: 20px 0;
+    color: #4a4a4a;
+  }
+  
+  .budgets {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  
+  .budget {
+    width: 200px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    margin: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .budget .header {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .budget .header a {
+    text-decoration: none;
+    color: #3498db;
+  }
+  
+  .createBudgetButton {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  /* .btn.btn-primary {
+    background-color: #3498db;
+    border: none;
+  } */

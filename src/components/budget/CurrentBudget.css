@@ -1,0 +1,89 @@
+.incomeHeader {
+    background-color: #f4f4f4;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  
+  .container-fluid {
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .fs-5 {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .amount {
+    display: flex;
+    align-items: center;
+  }
+  
+  button.btn {
+    margin-left: 10px;
+  }
+  
+  button.btn-warning {
+    margin-left: auto;
+  }
+  
+  h2, h4, h5 {
+    color: #333;
+  }
+  
+  h5.fs-2 {
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  div.fs-5 {
+    border-bottom: 1px dashed #e0e0e0;
+    padding: 10px 0;
+  }
+  
+  button.btn-danger, button.btn-primary {
+    font-size: 12px;
+  }
+  
+  .category-container {
+    display: flex; /* Flex layout to align items on the same line */
+    align-items: center; /* Vertically align the items */
+  }
+  
+  .category-name {
+    margin-right: 10px; /* Add some spacing between the name and the button */
+  }
+ 
+ /* .PieChart-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  .PieChart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .PieChart-legend-item {
+    margin: 5px;
+  }
+  
+  .PieChart-legend-color {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  } */

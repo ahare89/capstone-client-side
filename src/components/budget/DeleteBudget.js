@@ -17,5 +17,5 @@ export const DeleteBudget = ({id, getAllBudgets}) => {
             getAllBudgets()
         })
     }
-    return <button onClick={(clickEvent) => handleClickButton(clickEvent)} className="btn btn-primary"> Delete</button>
+    return <button onClick={(clickEvent) => handleClickButton(clickEvent)} className="btn btn-primary btn-sm"> Delete</button>
 }

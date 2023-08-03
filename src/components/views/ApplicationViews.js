@@ -4,22 +4,24 @@ import { NewBudgetForm } from "../budget/NewBudgetForm"
 import { BudgetList } from "../budget/BudgetList"
 import { CreateExpense } from "../budget/CreateExpense"
 import { CurrentBudget } from "../budget/CurrentBudget"
+import { BudgetHome } from "../budget/BudgetHome"
+import "../budget/Budget.css"
 
 export const ApplicationViews = () => {
 	return (
         <Routes>
             <Route path="/" element={
                 <>
-                    <h1 className="title">Where'd My Money Go</h1>
+                    <h1 className="display-3">Where'd My Money Go</h1>
 
                     <Outlet />
                 </>
             }>
 
-                <Route path="" element={ <Budget /> } />
+                <Route path="" element={ <BudgetHome /> } />
 				<Route path="create" element={ <NewBudgetForm />  } />
                 <Route path="mybudgets" element={ <BudgetList /> } /> 
-                <Route path="budget/:budgetId/" element={ <CurrentBudget />  } />
+                <Route path="budget/:budgetId/" element={ <Budget />  } />
             </Route>
         </Routes>
     )

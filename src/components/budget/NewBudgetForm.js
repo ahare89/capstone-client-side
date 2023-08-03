@@ -10,15 +10,19 @@ export const NewBudgetForm = () => {
   });
 
   const [categoryChecklist, setCategoryChecklist] = useState({});
-
+  const [isAllChecked, setIsAllChecked] = useState(false)
   const [categories, setCategories] = useState([]);
+
+//useEffect to fetch categories from database
 
   useEffect(() => {
     fetch("http://localhost:8088/categories")
       .then((res) => res.json())
       .then((data) => {
         setCategories(data)
+        //set initial checklist to an empty object
         let initialChecklist = {};
+        //loop over each category, setting each category to false
         data.forEach((category) => {
           initialChecklist[category.id] = false;
         });
@@ -26,16 +30,33 @@ export const NewBudgetForm = () => {
       });
   }, []);
 
+  //create variable to hold array of categories that are selected (true)
   const selectedCategories = Object.keys(categoryChecklist).filter((categoryId) => categoryChecklist[categoryId]);
+
+
+//create useEffect to watch for changes to categoryChecklist state, update budget state with categories that have been selected
 
   useEffect(() => {
     const selectedCategoryIds = selectedCategories.map(categoryId => parseInt(categoryId))
     update((prevBudget) => ({ ...prevBudget, categories: selectedCategoryIds }));
   }, [categoryChecklist]);
 
+  const handleCheckAllClick = () => {
+    
+    const updatedChecklist = {...categoryChecklist}
+
+    Object.keys(updatedChecklist).forEach((categoryId) => {
+        updatedChecklist[categoryId] = !isAllChecked
+    })
+    setCategoryChecklist(updatedChecklist)
+    setIsAllChecked(!isAllChecked)
+  }
+
+  //create click handler
   const handleCategoryCheckboxClick = (categoryId) => {
     setCategoryChecklist((prevChecklist) => ({
       ...prevChecklist,
+      //if button is clicked change value of key to whatever is opposite of current value, (true/false)
       [categoryId]: !prevChecklist[categoryId],
     }))
   }
@@ -63,16 +84,17 @@ export const NewBudgetForm = () => {
       body: JSON.stringify(budgetToSendToAPI),
     })
       .then((res) => res.json())
-      .then(() => {
-        navigate("/mybudgets");
+      .then((newBudget) => {
+        console.log(newBudget)
+        navigate(`/budget/${newBudget.id}`)
       });
   };
 
   return (
     <>
-      <form>
+      <form className="container-fluid">
         <fieldset>
-          <div>
+          <div className="form-check">
             <label htmlFor="budgetName">Budget Name</label>
             <input
               required
@@ -91,18 +113,18 @@ export const NewBudgetForm = () => {
           </div>
         </fieldset>
         <fieldset>
-          <div className="form-group">
-            <label htmlFor="category group">
+          <div className="form-check">
+            <label htmlFor="categorygroup" className="form-check-label">
               Choose your starting categories:{" "}
             </label>
             <p></p>
             {categories.map((category) => (
               <React.Fragment key={category.id}>
                 <input
-                  type="checkbox"
+                  className="form-check-input" type="checkbox" id="flexCheckDefault"
                   name="category_group"
                   value={category.id}
-                  checked={categoryChecklist[category.id]}
+                  checked={categoryChecklist[category.id] || isAllChecked}
                   onChange={() => handleCategoryCheckboxClick(category.id)}
                 />
                 {category.name}
@@ -111,6 +133,9 @@ export const NewBudgetForm = () => {
             ))}
           </div>
         </fieldset>
+        <button type="button" className="btn btn-info" onClick={handleCheckAllClick}>
+                {isAllChecked ? "Uncheck All" : "Check All"}
+            </button>
         <button
           onClick={(clickEvent) => handleSubmitButtonClick(clickEvent)}
           className="btn btn-primary"
