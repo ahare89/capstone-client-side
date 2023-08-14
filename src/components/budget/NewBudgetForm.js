@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Budget } from "./Budget";
 import { useNavigate } from "react-router-dom";
+import "./NewBudgetForm.css"
 
 export const NewBudgetForm = () => {
   const [budget, update] = useState({
@@ -93,7 +94,7 @@ export const NewBudgetForm = () => {
   return (
     <>
       <form className="container-fluid">
-        <fieldset>
+        <fieldset className="mb-3">
           <div className="form-check">
             <label htmlFor="budgetName">Budget Name</label>
             <input

@@ -12,12 +12,10 @@ export const ApplicationViews = () => {
         <Routes>
             <Route path="/" element={
                 <>
-                    <h1 className="display-3">Where'd My Money Go</h1>
-
                     <Outlet />
                 </>
             }>
-
+                
                 <Route path="" element={ <BudgetHome /> } />
 				<Route path="create" element={ <NewBudgetForm />  } />
                 <Route path="mybudgets" element={ <BudgetList /> } /> 

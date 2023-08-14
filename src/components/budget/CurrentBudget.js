@@ -19,13 +19,14 @@ export const CurrentBudget = ({
 }) => {
   const [isCreatingExpense, setIsCreatingExpense] = useState(false);
 
-  const { budgetId } = useParams();
-  const navigate = useNavigate();
-  const [budgetIncome, setBudgetIncome] = useState(0);
-  const [chartData, setChartData] = useState({ labels: [], data: [] });
-  const [showChart, setShowChart] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
-  const [currentExpense, setCurrentExpense] = useState(null);
+  const { budgetId } = useParams()
+  const navigate = useNavigate()
+  const [budgetIncome, setBudgetIncome] = useState(0)
+  const [chartData, setChartData] = useState({ labels: [], data: [] })
+  const [showChart, setShowChart] = useState(false)
+  const [isEditing, setIsEditing] = useState(false)
+  const [currentExpense, setCurrentExpense] = useState(null)
+  const [currentlyEditingExpenseId, setCurrentlyEditingExpenseId] = useState(null)
 
   //useEffect to fetch an individual budgets data and the expenses for that budget.  observes state change for budgetId from useParams
   useEffect(() => {
@@ -225,6 +226,8 @@ export const CurrentBudget = ({
     "#f39c12",
     "#d35400",
     "#c0392b",
+    '#F1E9DB',
+    '#F7FFF7'
   ];
 
   
@@ -232,15 +235,15 @@ export const CurrentBudget = ({
   return (
     <>
       <div className="incomeHeader">
-      <h4>
+      <h3>
     Money Left To Budget:
     <span style={{ color: budgetIncome < 0 ? 'red' : 'green' }}>
       {formatCurrency(budgetIncome)}
     </span>
-  </h4>
+  </h3>
       </div>
       <div>
-        <h2>{budget?.name}</h2>
+        <h4 className="budget_name">{budget?.name}</h4>
       </div>
       <div className="container-fluid">
         <PieChart chartData={chartData} chartColors={chartColors}/>
@@ -279,12 +282,21 @@ export const CurrentBudget = ({
                     <button className="btn btn-primary btn-sm"
                       onClick={() => {
                         setCurrentExpense(expenseState);
-                        setIsEditing(true);
+                        setCurrentlyEditingExpenseId(expenseState.id);
                       }}
                     >
                         <i className="fas fa-edit"></i>
                     </button>
                     </div>
+
+                    {currentlyEditingExpenseId === expenseState.id && (
+                  <EditExpense 
+                    expenseId={expenseState.id} 
+                    setIsEditing={() => setCurrentlyEditingExpenseId(null)} 
+                    setExpenses={setExpenses}
+                  />
+                )}
+                
                   </div>
                 ))}
             </div>

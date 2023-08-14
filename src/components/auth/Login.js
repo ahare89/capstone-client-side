@@ -32,9 +32,9 @@ export const Login = () => {
         <main className="container--login">
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Where'd My Money Go</h1>
+                    <h1>Where'd My Money Go?</h1>
                     <h2>Please sign in</h2>
-                    <fieldset>
+                    <fieldset className="mb-3">
                         <label htmlFor="inputEmail"> Email address </label>
                         <input type="email"
                             value={email}
@@ -44,7 +44,7 @@ export const Login = () => {
                             required autoFocus />
                     </fieldset>
                     <fieldset>
-                        <button type="submit">
+                        <button type="submit" className="btn btn-primary">
                             Sign in
                         </button>
                     </fieldset>

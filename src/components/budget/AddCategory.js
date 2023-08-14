@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "./AddCategory.css"
 
 export const AddCategory = ({budgetId, setCategories, categories, getAllBudgets, setCategoriesUpdateTrigger}) => {
 
@@ -63,11 +64,16 @@ export const AddCategory = ({budgetId, setCategories, categories, getAllBudgets,
 
 
   return (
-    <form className="dropdown" onSubmit={handleSubmit}>
-      <label htmlFor="categorySelect">Select Category: </label>
+    <div className="addCategoryDropdown">
+    <form className="container mt-4" onSubmit={handleSubmit}>
+      <div className="form-group mb-3">
+        <h4>Add Budget Category</h4>
+      <label htmlFor="categorySelect"></label>
       <select
+        className = "form-control"
         id="categorySelect"
         value={selectedCategory}
+        required autoFocus
         onChange={(e) => setSelectedCategory(e.target.value)}
       >
         <option value="" disabled className="dropdown-item">
@@ -79,10 +85,13 @@ export const AddCategory = ({budgetId, setCategories, categories, getAllBudgets,
           </option>
         ))}
       </select>
+      </div>
     {/* short circuit, if error exists, display error */}
       {error && <p>{error}</p>}
-
+          <div className="form-group">
       <button type="submit" className="btn btn-success">Save</button>
+      </div>
     </form>
+    </div>
   );
 };

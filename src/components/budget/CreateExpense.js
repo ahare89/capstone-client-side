@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import "./CreateExpense.css"
 
 export const CreateExpense = ({expenseState, setExpenses, budget, setBudget, setCategoriesUpdateTrigger}) => {
     
@@ -94,8 +95,8 @@ export const CreateExpense = ({expenseState, setExpenses, budget, setBudget, set
     
 
     return (
-        <form className="expenseForm">
-            <h2 className="expenseForm__Title">New Expense</h2>
+        <form className="expenseForm container mt-4">
+            <h4 className="expenseForm__Title">New Expense</h4>
             <fieldset>
             <div className="form-group">
                 <label htmlFor="description">Description: </label>

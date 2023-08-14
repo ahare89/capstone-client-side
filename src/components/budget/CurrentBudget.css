@@ -50,9 +50,9 @@
     padding: 10px 0;
   }
   
-  button.btn-danger, button.btn-primary {
+  /* button.btn-danger, button.btn-primary {
     font-size: 12px;
-  }
+  } */
   
   .category-container {
     display: flex; /* Flex layout to align items on the same line */
@@ -87,3 +87,14 @@
     height: 20px;
     margin-right: 5px;
   } */
+
+  .budget_name {
+    text-align: center;
+  }
+
+  .category-container {
+    background-color: #e0f2e9; /* Adjust the shade of green as needed */
+    padding: 10px; /* Adjust padding as needed */
+    margin: 10px 0; /* Adjust margins as needed */
+    border-radius: 5px; /* Optional, to round corners */
+  }

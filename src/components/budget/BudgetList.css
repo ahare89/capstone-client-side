@@ -19,6 +19,7 @@
     border: 1px solid #ddd;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
+    text-align: center;
   }
   
   .budget .header {
@@ -40,3 +41,7 @@
     background-color: #3498db;
     border: none;
   } */
+
+  .btn-create-new-budget {
+    text-align: center;
+  }

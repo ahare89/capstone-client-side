@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import "./DeleteBudget.css"
 
 export const DeleteBudget = ({id, getAllBudgets}) => {
 
@@ -17,5 +18,10 @@ export const DeleteBudget = ({id, getAllBudgets}) => {
             getAllBudgets()
         })
     }
-    return <button onClick={(clickEvent) => handleClickButton(clickEvent)} className="btn btn-primary btn-sm"> Delete</button>
+    return <>
+    <div className="deleteBudgetButton">
+    <button onClick={(clickEvent) => handleClickButton(clickEvent)} className="btn btn-primary btn-sm"> 
+    <i className="fa fa-trash"></i></button>
+    </div>
+    </>
 }

@@ -35,3 +35,14 @@
     color: green;
 }
 
+.custom-container {
+    width: 70%; /* Adjust as needed */
+    max-width: 100%; /* Adjust as needed */
+    margin: 0 auto; /* Center the container if you like */
+  }
+
+  .budget-margin-bottom {
+    margin-bottom: 20px;
+  }
+
+  

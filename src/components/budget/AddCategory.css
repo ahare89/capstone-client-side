@@ -1,0 +1,12 @@
+.addCategoryDropdown {
+    padding: 2em;
+}
+
+.addCategoryDropdown select {
+    margin-bottom: 10px; /* Adjust this value according to your preference */
+}
+
+.addCategoryDropdown p {
+    color: red;
+    margin-bottom: 10px;
+}

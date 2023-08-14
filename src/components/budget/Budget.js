@@ -37,18 +37,18 @@ export const Budget = () => {
         setCategories={setCategories} income={income} setIncome={setIncome} incomeChangeTrigger={incomeChangeTrigger} 
         onIncomeChange={() => setIncomeChangeTrigger(incomeChangeTrigger + 1)} />
         { showCreateExpense && <CreateExpense setCategoriesUpdateTrigger={setCategoriesUpdateTrigger} expenseState={expenses} setExpenses={setExpenses}  budgetId={budgetId} budget={budget} setBudget={setBudget}/> }
-        <button className="btn btn-primary" onClick={() => setShowCreateExpense(!showCreateExpense)}>
+        <button className="btn btn-primary budget-margin-bottom" onClick={() => setShowCreateExpense(!showCreateExpense)}>
           { showCreateExpense ? 'Cancel' : 'Create New Expense' }
         </button>
         { showAddCategory && <AddCategory budgetId={budgetId} setCategoriesUpdateTrigger={setCategoriesUpdateTrigger} setCategories={setCategories} categories={categories}/>}
-        <button className="btn btn-primary" onClick ={() => setShowAddCategory(!showAddCategory)}>
+        <button className="btn btn-primary budget-margin-bottom" onClick ={() => setShowAddCategory(!showAddCategory)}>
         { showAddCategory ? 'Cancel' : 'Add Budget Category'}
         </button>
         {
             //short circuit, if showCreateIncome is truthy, render the CreateIncome component
         }
         { showCreateIncome && <CreateIncome budgetId = {budgetId} onIncomeAdded={()=> setIncomeChangeTrigger(incomeChangeTrigger + 1)}/>}
-        <button className="btn btn-primary" onClick={() => setShowCreateIncome(!showCreateIncome)}>
+        <button className="btn btn-primary budget-margin-bottom" onClick={() => setShowCreateIncome(!showCreateIncome)}>
         { showCreateIncome ? 'Cancel': 'Add Income'}
         </button>
         

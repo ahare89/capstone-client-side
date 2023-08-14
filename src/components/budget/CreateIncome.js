@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useParams } from "react-router-dom"
+import "./CreateIncome.css"
 
 export const CreateIncome = ({ onIncomeAdded}) => {
 
@@ -32,19 +33,24 @@ export const CreateIncome = ({ onIncomeAdded}) => {
                 if (onIncomeAdded) {
                     onIncomeAdded()
                 }
+                setIncome({
+                    budgetId: budgetId,
+                    amount: ""
+                })
             })
 
 
     }
 
     return <>
-    <div>
-        <label htmlFor="income">Add Income:</label>
+    <div className="incomeField container mt-4">
+        <h4>Add Income</h4>
+        <label htmlFor="income"></label>
         <input
             required autoFocus
             type="text"
             className="form-control"
-            placeholder="$1000.00"
+            placeholder="$0.00"
             value={income.amount}
             onChange={
                 (evt) => {
@@ -55,6 +61,6 @@ export const CreateIncome = ({ onIncomeAdded}) => {
             } />
 
         </div>
-        <button onClick={(clickEvent) => handleSaveButtonClick(clickEvent)} className="btn btn-primary">Save</button>
+        <button onClick={(clickEvent) => handleSaveButtonClick(clickEvent)} className="btn btn-success budget-margin-bottom">Save</button>
     </>
 }

@@ -57,7 +57,12 @@ export const BudgetList = () => {
     ) 
     //if the length of the filtered budgets is <= 0, then show the create new budget button
     if (filteredBudgets.length <= 0) {
-    return <button className="btn btn-primary" onClick={ () => { navigate("/create")}}>Create New Budget</button>
+    return <>
+    <h2 className="title">You have no saved budgets!</h2>
+    <div className="createBudgetButton">
+    <button className="btn btn-primary btn-lg createBudgetButton" onClick={ () => { navigate("/create")}}>Create New Budget</button>
+    </div>
+    </>
     }
     
     return <>
@@ -80,7 +85,7 @@ export const BudgetList = () => {
        
         </article>
         <div className="createBudgetButton">
-        <button className="btn btn-primary" onClick={ () => { navigate("/create")}}>Create New Budget</button>
+        <button className="btn btn-primary btn-lg" onClick={ () => { navigate("/create")}}>Create New Budget</button>
         </div>
     </>
 

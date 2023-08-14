@@ -49,17 +49,18 @@ export const EditExpense = ({expenseId, setIsEditing, isEditing, setExpenses}) =
 
 
     return (
-        
+        <div className="container mt-5">
         <form className="expenseForm">
-            <h2 className="expenseForm__title">Edit Expense</h2>
-            <fieldset>
+            <h2 className="expenseForm__title mb-4">Edit Expense</h2>
+            <fieldset className="mb-3">
                 <div className="form-group">
                     <label htmlFor="description">Name:</label>
+                    <div className="input-group">
                     <input
                         required autoFocus
                         type="text"
                         className="form-control"
-                        placeholder="{expense.name}"
+                        placeholder={expense.name}
                         value={expense.name}
                         onChange={
                             (evt) => {
@@ -69,11 +70,14 @@ export const EditExpense = ({expenseId, setIsEditing, isEditing, setExpenses}) =
                             }
                         } />
                 </div>
+                </div>
             </fieldset>
-            <fieldset>
+            <fieldset className="mb-3">
                 <div className="form-group">
                     <label htmlFor="name">Amount:</label>
+                    <div className="input-group">
                     <input type="number"
+                        className="form=control"
                         value={expense.amount}
                         onChange={
                             (evt) => {
@@ -83,13 +87,17 @@ export const EditExpense = ({expenseId, setIsEditing, isEditing, setExpenses}) =
                             }
                         } />
                 </div>
+                </div>
             </fieldset>
+            <div className="d-flex justify-content-between">
             <button 
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-            className="btn btn-primary">
+                className="btn btn-primary mr-2">
                 Save
             </button>
-            <button type="button" onClick={handleCancelButtonClick} className="btn btn-primary">Cancel</button>
+            </div>
+            <button type="button" onClick={handleCancelButtonClick} className="btn btn-secondary">Cancel</button>
         </form>
+        </div>
     )
 }
